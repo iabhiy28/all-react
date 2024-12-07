@@ -1,6 +1,6 @@
  import { BrowserRouter, Routes , Route, Link , useNavigate, Outlet } from 'react-router-dom';
 import './App.css'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 
@@ -8,6 +8,23 @@ import { useEffect, useRef } from 'react';
 
 
 function App(){
+  const [count,setCount] = useState(0);
+  const timer = useRef();
+
+  function handleStart(){
+    let value = setInterval(function(){
+      setCount(count =>count+1);
+
+    },1000);
+    timer.current = value;
+
+  }
+
+  function handleStop() {
+    clearInterval(timer.current)
+  }
+
+
   const inputRef = useRef();
 
 
@@ -17,6 +34,9 @@ function App(){
   }
   return (
     <div>
+      <h1>{count}</h1>
+      <button onClick={handleStart}>Start</button>
+      <button onClick={handleStop}>Stop</button>
       <label htmlFor="">Name</label><input ref={inputRef} type="text" name="" id="" />
       <label htmlFor="password">Password</label><input type="password" name='password' />
       <button onClick={handleRef}> Submit</button>
