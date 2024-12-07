@@ -1,25 +1,46 @@
  import { BrowserRouter, Routes , Route, Link , useNavigate, Outlet } from 'react-router-dom';
 import './App.css'
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-function App() {
 
+
+
+
+
+function App(){
+  const inputRef = useRef();
+
+
+  function handleRef(){
+    inputRef.current.focus();
+    console.log(inputRef.current.value());
+  }
   return (
     <div>
-      <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-        <Route path='/neet/online-11' element={<Class11Program />} />
-        <Route path='/neet/online-12' element={<Class12Program />} />
-        <Route path='/neet/online-10' element={<Class10Program />} />
-        <Route path='/' element={<Landing />} />
-        <Route path='*' element={<Error />} />
-        </Route>
-      </Routes>
-     </BrowserRouter>
+      <label htmlFor="">Name</label><input ref={inputRef} type="text" name="" id="" />
+      <label htmlFor="password">Password</label><input type="password" name='password' />
+      <button onClick={handleRef}> Submit</button>
     </div>
-  );
+  )
 }
+// function App() {
+
+//   return (
+//     <div>
+//       <BrowserRouter>
+//       <Routes>
+//         <Route path='/' element={<Layout />}>
+//         <Route path='/neet/online-11' element={<Class11Program />} />
+//         <Route path='/neet/online-12' element={<Class12Program />} />
+//         <Route path='/neet/online-10' element={<Class10Program />} />
+//         <Route path='/' element={<Landing />} />
+//         <Route path='*' element={<Error />} />
+//         </Route>
+//       </Routes>
+//      </BrowserRouter>
+//     </div>
+//   );
+// }
 //lets make all the componets 
 
 
