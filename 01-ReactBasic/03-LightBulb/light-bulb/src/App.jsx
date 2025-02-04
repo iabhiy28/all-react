@@ -2,7 +2,7 @@ import { useState , createContext, useContext } from "react";
 
 
 const BulbContext = createContext();
-
+ 
 function App() {
   const [on , setOn] = useState(false);
 
